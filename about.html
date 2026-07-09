@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About</title>
+  <style>
+    /* Header styling with flexbox */
+    header {
+      background-color: #007BFF;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header nav a {
+      text-decoration: none;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0 15px;
+    }
+
+    /* Style for Logout link to differentiate it */
+    .logout-link {
+      background-color: #FF6347; /* Tomato color */
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    .logout-link:hover {
+      background-color: #FF4500; /* OrangeRed color on hover */
+    }
+
+    /* Style the h2 heading */
+    h2 {
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+      color: violet;
+      text-align: center;
+    }
+
+    /* Style the image */
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width:100%;
+      height: auto;
+    }
+
+    /* Style the text section with a pleasant background */
+    .text-section {
+      background-color: blanchedalmond;
+      padding: 10px;
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: justify;
+      max-width: 1200px;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with flexbox for navigation -->
+  <header>
+    <nav>
+      <a href="courses.html">Courses</a>
+    </nav>
+    <nav>
+      <a href="login.html" class="logout-link">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Image at the center -->
+    <img src="about.jpg" alt="About Image" />
+
+    <!-- Text section with background -->
+    <div class="text-section">
+      <h2>Welcome to ONLINE LEARNING, your gateway to high-quality online learning experiences!</h2>
+      <p>
+        Our mission is to empower learners from all walks of life by providing accessible, affordable, and flexible educational opportunities that fit your needs and learning style.
+      </p>
+      <p>
+        At ONLINE LEARNING, we believe that education should be accessible to everyone, no matter where you are or what your background is. Whether you're looking to develop new skills, advance your career, or explore a passion, we have a wide range of courses to help you achieve your goals.
+      </p>
+    </div>
+  </main>
+</body>
+</html>
+

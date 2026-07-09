@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: aliceblue;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        .course {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .enroll-button {
+            display: inline-block;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .enroll-button:hover {
+            background-color: #0056b3;
+        }
+
+        .enrolled {
+            background-color: gray !important;
+            cursor: default !important;
+        }
+    </style>
+    <script>
+        function checkEnrollment() {
+            document.querySelectorAll(".course").forEach(course => {
+                const courseName = course.getAttribute("data-course");
+                const button = course.querySelector(".enroll-button");
+
+                // Check sessionStorage for current enrollment status
+                const isEnrolled = sessionStorage.getItem("enrolled_" + courseName);
+
+                if (isEnrolled) {
+                    button.innerText = "Enrolled";
+                    button.classList.add("enrolled");
+                    button.disabled = true;
+                } else {
+                    button.innerText = "Enroll";
+                    button.classList.remove("enrolled");
+                    button.disabled = false;
+                    button.onclick = function () {
+                        // Set enrollment status in sessionStorage
+                        sessionStorage.setItem("enrolled_" + courseName, "true");
+                        window.location.href = "enroll.html?course=" + encodeURIComponent(courseName);
+                    };
+                }
+            });
+        }
+
+        window.onload = checkEnrollment;
+    </script>
+</head>
+<body>
+    <h1>Welcome to Your Courses</h1>
+
+    <div class="course" data-course="Web Development">
+        <h2>Web Development</h2>
+        <p>Learn HTML, CSS, JavaScript, and more.</p>
+        <button class="enroll-button">Enroll</button>
+    </div>
+
+    <div class="course" data-course="Data Science">
+        <h2>Data Science</h2>
+        <p>Explore Python, Machine Learning, and AI.</p>
+        <button class="enroll-button">Enroll</button>
+    </div>
+
+    <div class="course" data-course="Cybersecurity">
+        <h2>Cybersecurity</h2>
+        <p>Master ethical hacking and network security.</p>
+        <button class="enroll-button">Enroll</button>
+    </div>
+</body>
+</html>
+

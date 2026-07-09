@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>Enroll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: aliceblue;
+            padding: 50px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function getCourseName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseName = urlParams.get("course");
+            if (courseName) {
+                document.getElementById("courseName").innerText = courseName;
+                document.getElementById("courseInput").value = courseName;
+            }
+        }
+
+        function enrollUser(event) {
+            event.preventDefault();
+            const courseName = document.getElementById("courseInput").value;
+            
+            // Store enrollment in localStorage
+            localStorage.setItem("enrolled_" + courseName, "true");
+
+            // Redirect to thank you page
+            window.location.href = "thankyou.html";
+        }
+    </script>
+</head>
+<body onload="getCourseName()">
+    <h1>Enroll in <span id="courseName"></span></h1>
+    
+    <div class="form-container">
+        <form onsubmit="enrollUser(event)">
+            <input type="hidden" id="courseInput">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
